@@ -1,5 +1,6 @@
 package com.example.NoteTaker
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -25,4 +26,14 @@ class MyViewModel : ViewModel() {
         val currentNotes = _notes.value ?: emptyList()
         _notes.value = currentNotes + Pair(date, noteText)
     }
+
+
+    private val _currentTab = MutableLiveData<Int>()
+    val currentTab: LiveData<Int> = _currentTab
+
+    fun setCurrentTab(position: Int) {
+        _currentTab.value = position
+    }
 }
+
+
